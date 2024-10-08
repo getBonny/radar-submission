@@ -17,6 +17,7 @@ Application Layer (Solana)
 Bonny Backend
 
 A overview of the archtecture:
+![Architecture Diagram](https://github.com/getBonny/radar-submission/blob/main/Architecture.png)
 
 
 
