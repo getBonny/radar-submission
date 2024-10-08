@@ -1,22 +1,21 @@
 # Bonny Architecture - Streamlining Web2 Data into the Open Web
 
-#### This document will describe the architecture of Bonny’s approach to make consumer data more accessible to everyone by leveraging the power of decentralization and Web3.
+#### Bonny tries to make consumer data more accessible to everyone by leveraging the power of decentralization and Web3.
 To achieve this the system has multiple components that interact with each other, namely: 
 
-
-Producer (Bonny App User that uploads data)
+Producer ( [Bonny App](https://github.com/getBonny/bonny-beta) User that uploads data)
 
 Developer (Every entity that wants to work with the aggregated data)
 
-Data Layer (Ceramic / IPFS)
+Data Layer ([Ceramic](https://ceramic.network/) / IPFS)
 
-Access-Rights Layer (Lit Protocol)
+Access-Rights Layer ([Lit Protocol](https://www.litprotocol.com/))
 
 Application Layer (Solana)
 
 Bonny Backend
 
-A overview of the archtecture:
+A overview of the architecture:
 ![Architecture Diagram](https://github.com/getBonny/radar-submission/blob/main/Architecture.png)
 
 
