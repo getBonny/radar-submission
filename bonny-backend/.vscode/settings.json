@@ -1,0 +1,5 @@
+{
+    "git.autofetch": true,
+    "breadcrumbs.enabled": true,
+    "eslint.run": "onSave",
+}
