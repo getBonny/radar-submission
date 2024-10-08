@@ -1,73 +1,55 @@
 import {
-  MiddlewareConsumer,
   Module,
-  OnModuleInit,
-  RequestMethod,
 } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ProfileModule } from './model/profile/profile.module';
-import { InjectConnection, TypeOrmModule } from '@nestjs/typeorm';
-import { AffiliateModule } from './model/affiliate/affiliate.module';
 import { ConfigModule } from '@nestjs/config';
-import { HomeModule } from './controller/home/home.module';
-import { typeOrmAsyncConfig } from './config/typeorm-config';
-import { CouponModule } from './model/coupons/coupons.module';
-import { MarketplaceModule } from './controller/marketplace/marketplace.module';
 import { ReceiptDataModule } from './service/receipt/receiptdata.module';
-import { AdminModule } from './controller/admin/admin.module';
-import { AuthModule } from './controller/auth/auth.module';
-import { UserModule } from './controller/user/user.module';
-import { StatisticsModule } from './controller/stats/statistics.module';
-import { FirebaseModule } from './firebase/firebase.module';
-import { EntitySubscriber } from './audit/entity-subscriber';
-import { AuditModule } from './audit/audit.module';
-import databaseConfig from './config/database-config';
-import { CurrentUserService } from './audit/current-user.service';
-import { Connection } from 'typeorm';
-import { ErrorModule } from './controller/error/error.module';
+import { AuthModule } from './business-logic/auth/auth.module';
+import { SupabaseAuthModule } from './auth/auth.module';
+import { AuditModule } from './business-logic/audit/audit.module';
+import { CurrentUserService } from './business-logic/audit/current-user.service';
+import { BotModule } from './discord-bot/bot.module';
+import { TelegrafModule } from './telegraf/telegraf.module';
 import { LanguageMiddleware } from './i18n/LanguageMiddleware';
-import { ProdegeModule } from './controller/prodege/prodege.module';
-import { AiModule } from './ai/ai.module';
+import { ReferralModule } from './business-logic/referral/referral.module';
+import { AffiliateModule } from './business-logic/affiliate/affiliate.module';
+import { CouponModule } from './business-logic/coupons/coupons.module';
+import { StatsModule } from './business-logic/stats/stats.module';
+import { ProdegeModule } from './business-logic/prodege/prodege.module';
+import { UserModule } from './business-logic/user/user.module';
+import { ReceiptModule } from './business-logic/receipt/receipt.module';
+import { QuestModule } from './business-logic/quest/quest.module';
+import { SurveyModule } from './business-logic/survey/survey.module';
+import { TransactionModule } from './business-logic/transaction/transaction.module';
+import { SupabaseModule } from './service/supabase/supabase.module';
+import { LevelModule } from './business-logic/level/level.module';
+import { LitModule } from './service/lit/lit.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig],
       envFilePath: `config/.env.${process.env.NODE_ENV}`,
     }),
-    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
+    SupabaseModule,
     AuditModule, // AuditModule sollte vor anderen Modulen importiert werden, die darauf angewiesen sind
-    ProfileModule,
+    UserModule,
     AffiliateModule,
     CouponModule,
-    HomeModule,
-    MarketplaceModule,
     ReceiptDataModule,
-    AdminModule,
     AuthModule,
-    UserModule,
-    StatisticsModule,
-    FirebaseModule,
-    ErrorModule,
+    StatsModule,
+    SupabaseAuthModule,
+    ReferralModule,
+    ReceiptModule,
+    QuestModule,
+    SurveyModule,
+    ReferralModule,
+    TransactionModule,
     ProdegeModule,
-    AiModule,
+    LevelModule,
+    LitModule
   ],
-  providers: [AppService, EntitySubscriber, CurrentUserService],
+  providers: [AppService, CurrentUserService],
 })
-export class AppModule implements OnModuleInit {
-  constructor(
-    @InjectConnection() private readonly connection: Connection,
-    private readonly entitySubscriber: EntitySubscriber,
-  ) {}
-
-  async onModuleInit() {
-    this.connection.subscribers.push(this.entitySubscriber);
-  }
-
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LanguageMiddleware)
-      .forRoutes({ path: '*', method: RequestMethod.ALL });
-  }
-}
+export class AppModule {}

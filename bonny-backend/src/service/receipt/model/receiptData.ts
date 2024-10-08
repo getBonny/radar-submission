@@ -1,18 +1,23 @@
+import { ReceiptItem } from "src/db/schema";
+
 export interface ReceiptDataItemDTO {
   description: string;
   amount: number;
-  total_price: number;
+  totalPrice: number;
 }
 
 export interface ReceiptDataDTO {
-  receipt_date: Date;
-  total_amount: number;
-  supplier_name: string;
-  supplier_location: string;
+  receiptDate: Date;
+  totalAmount: number;
+  supplierName: string;
+  supplierLocation: string;
+  paymentMethod: string;
   language: string;
   country: string;
-  trust_score: number;
-  quality_score: number;
+  currency: string;
+  items: ReceiptItem[];
+  trustScore: number;
+  qualityScore: number;
 }
 
 export interface ReceiptAttributesDTO {
@@ -29,4 +34,10 @@ export interface ReceiptDTO {
   valid: boolean;
   data: ReceiptDataDTO;
   attributes: ReceiptAttributesDTO;
+}
+
+export interface ReceiptUploadMessage {
+  event: string,
+  payload: ReceiptDTO,
+  type: string
 }
