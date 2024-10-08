@@ -35,7 +35,7 @@ To access the network we have to set up our own Node so we can access the cerami
 
 ## Access-Rights Layer
 
-The Access-Rights Layer describes how decryption keys of the user data is handled in a decentralized context. Lit Protocol built a network around decentralized Key Management with user-defined access-rights based on Threshold Cryptography.
+The Access-Rights Layer describes how decryption keys of the user data is handled in a decentralized context. Lit Protocol built a network around decentralized Key Management with user-defined access-rights based on [Threshold Cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem).
 When the User wants to upload some piece of data he first lets it encrypt through the Lit Protocol thus generating the corresponding decryption key which is shared inside the network. Now when a Data Consumer wants to access some piece of data he first streams the data from the Data Layer and then requests the decryption of the data through Lit. The protocol will check if the authenticated user has the corresponding access rights and decrypts the ciphertext into the original data.
 All the defined access-rights are Conditions that are dependent on state on the Application Layer (Solana). You can bind access-rights of specific data to Solana state for example the ownership of an specific NFT or some state inside a PDA. So ultimately all the access-rights are directly bonded to Tokens or state on Solana thus tokenizing the produced consumer data.
 
