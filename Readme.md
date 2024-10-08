@@ -1,6 +1,6 @@
 # Bonny Architecture - Streamlining Web2 Data into the Open Web
 
-#### Bonny tries to make consumer data more accessible to everyone by leveraging the power of decentralization and Web3.
+#### Bonny tries to make consumer data more accessible to everyone by leveraging the power of decentralization and Self Sovereign Identities.
 To achieve this the system has multiple components that interact with each other, namely: 
 
 Producer ([Bonny App](https://github.com/getBonny/radar-submission/tree/main/bonny-beta) User that uploads data)
