@@ -3,7 +3,7 @@
 #### Bonny tries to make consumer data more accessible to everyone by leveraging the power of decentralization and Web3.
 To achieve this the system has multiple components that interact with each other, namely: 
 
-Producer ( [Bonny App](https://github.com/getBonny/bonny-beta) User that uploads data)
+Producer ([Bonny App](https://github.com/getBonny/radar-submission/tree/main/bonny-beta) User that uploads data)
 
 Developer (Every entity that wants to work with the aggregated data)
 
